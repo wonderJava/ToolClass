@@ -1,5 +1,8 @@
 package cn.huchao.util;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -83,12 +86,38 @@ public class StringUtil {
 		}
 	}
 
+	/**
+	 * 2017年7月5日  huchao
+	 *  @description  把map变成url参数串 例如：b=2&c=3&a=1
+	 * @param map
+	 * @return
+	 */
+	private static String parseParams(Map<String, Object> map) {
+		StringBuilder sb = new StringBuilder();
+		String str = "";
+		if (map != null) {
+			for (Entry<String, Object> e : map.entrySet()) {
+				if (e.getKey() != null && e.getValue() != null) {
+					sb.append(e.getKey()).append("=").append(e.getValue()).append("&");
+				}
+			}
+			str = sb.substring(0, sb.length() - 1);
+		}
+		return str;
+	}
+
 	public static void main(String[] args) {
 		String a = "18239639432   ";
 		System.out.println(StringUtil.isNotEmpty(a));
 		System.out.println(StringUtil.isEmpty(a));
 		System.out.println(StringUtil.clearBlank(a));
 		System.out.println(StringUtil.isMobilePhone(a));
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("a", "1");
+		map.put("b", "2");
+		map.put("c", "3");
+		System.out.println(parseParams(map));
+
 	}
 
 }
