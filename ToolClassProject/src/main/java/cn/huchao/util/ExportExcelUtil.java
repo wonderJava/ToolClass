@@ -186,6 +186,17 @@ public class ExportExcelUtil {
 	 */
 	public static void exportData(HttpServletResponse response, List<Map<String, Object>> orderList,
 			String[] titleNames, String[] keysName, String reportName, String fileName) {
+		//需要判断浏览器，以支持中文文件名
+		/*String agent = request.getHeader("USER-AGENT").toLowerCase();
+		response.setContentType("application/vnd.ms-excel");
+		String fileName = excelname;
+		String codedFileName = java.net.URLEncoder.encode(fileName, "UTF-8");
+		if (agent.contains("firefox")) {
+			response.setCharacterEncoding("utf-8");
+			response.setHeader("content-disposition", "attachment;filename=" + new String(fileName.getBytes(), "ISO8859-1") + ".xls");
+		} else {
+			response.setHeader("content-disposition", "attachment;filename=" + codedFileName + ".xls");
+		}*/
 		// 将结果转换成Excel文件
 		// 文件名为时间戳
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
