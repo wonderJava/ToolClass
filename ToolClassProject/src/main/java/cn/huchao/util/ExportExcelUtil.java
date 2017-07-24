@@ -3,10 +3,12 @@ package cn.huchao.util;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -184,36 +186,33 @@ public class ExportExcelUtil {
 	 * @param reportName  页标题
 	 * @param fileName		文件名
 	 */
-	public static void exportData(HttpServletResponse response, List<Map<String, Object>> orderList,
+	public static void exportData(HttpServletResponse response,HttpServletRequest request, List<Map<String, Object>> dataMapList,
 			String[] titleNames, String[] keysName, String reportName, String fileName) {
-		//需要判断浏览器，以支持中文文件名
-		/*String agent = request.getHeader("USER-AGENT").toLowerCase();
-		response.setContentType("application/vnd.ms-excel");
-		String fileName = excelname;
-		String codedFileName = java.net.URLEncoder.encode(fileName, "UTF-8");
-		if (agent.contains("firefox")) {
-			response.setCharacterEncoding("utf-8");
-			response.setHeader("content-disposition", "attachment;filename=" + new String(fileName.getBytes(), "ISO8859-1") + ".xls");
-		} else {
-			response.setHeader("content-disposition", "attachment;filename=" + codedFileName + ".xls");
-		}*/
 		// 将结果转换成Excel文件
-		// 文件名为时间戳
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-		Date date = new Date();
-		//String fileNameAbo = dateFormat.format(date) + ".xls";
-		String fileNameAbo = fileName + ".xls";// 文件全名称
-		response.setContentType("application/vnd.ms-excel;charset=UTF-8");
-		response.setHeader("Content-Disposition", "attachment; filename=" + response.encodeURL(fileNameAbo));
+		// 需要判断浏览器，以支持中文文件名
+		try {
+			String agent = request.getHeader("USER-AGENT").toLowerCase();
+			response.setContentType("application/vnd.ms-excel");
+			String codedFileName = java.net.URLEncoder.encode(fileName, "UTF-8");
+			if (agent.contains("firefox")) {
+				response.setCharacterEncoding("utf-8");
+				response.setHeader("content-disposition",
+						"attachment;filename=" + new String(fileName.getBytes(), "ISO8859-1") + ".xls");
+			} else {
+				response.setHeader("content-disposition", "attachment;filename=" + codedFileName + ".xls");
+			}
+		} catch (Exception e) {
+			logger.error("处理浏览器兼容失败", e);
+		}
 		// 转成Excel下载
 		try {
 			OutputStream outputStream = response.getOutputStream();
-			exportExcel(orderList, outputStream, titleNames, keysName, reportName);
+			exportExcel(dataMapList, outputStream, titleNames, keysName, reportName);
 		} catch (Exception e) {
 			logger.error("转换成Excel文件，提供下载，出错", e);
 		} finally {
 			// 清空trandsOrderVoList
-			orderList.clear();
+			dataMapList.clear();
 		}
 	}
 
@@ -221,5 +220,7 @@ public class ExportExcelUtil {
 		String[] titleNames = { "序号", "订单号", "流水号", "活动号", "支付渠道", "支付金额（元）", "支付状态", "创建时间", "完成时间", "客户姓名", "客户手机号码",
 				"客户公司名称", "客户地市", "客户备注", "活动类型", "商品名", "办理人员", "人员信息" };
 		String[] keysName = { "a", "b" };
+		System.out.println(Arrays.toString(titleNames));
+		System.out.println(Arrays.toString(keysName));
 	}
 }
