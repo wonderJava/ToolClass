@@ -41,7 +41,12 @@
     <version>3.2.1</version>
 </dependency>
 
-
+<!-- 导出为Excel文件 -->
+		<dependency>
+			<groupId>jexcelapi</groupId>
+			<artifactId>jxl</artifactId>
+			<version>2.4.2</version>
+		</dependency>
 
 		<!--junit -->
 		<dependency>

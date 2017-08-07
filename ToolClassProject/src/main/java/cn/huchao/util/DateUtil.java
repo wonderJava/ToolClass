@@ -30,6 +30,7 @@ public final class DateUtil {
 		String YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
 		String YYYYMMDDHHMMSSSSS = "yyyyMMddHHmmssSSS";
 		String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
+		String YYYY年MM月DD日HH时MM分SS秒 = "yyyy年MM月dd日 HH时mm分ss秒";
 	}
 
 	/**
@@ -104,5 +105,40 @@ public final class DateUtil {
 		now.setTime(d);
 		now.set(Calendar.DATE, now.get(Calendar.DATE) + day);
 		return now.getTime();
+	}
+	/**
+	 * @description
+	 *	获取昨天的开始时间
+	 * @return
+	 *@2017年7月11日
+	 *@author huchao
+	 */
+	public static Date getStartOfyesterday() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.add(Calendar.DATE, -1);
+		calendar.set(Calendar.MILLISECOND, 0);
+		Date date = calendar.getTime();
+		return date;
+	}
+
+	/**
+	 * @description
+	 *	获取昨天的结束时间
+	 * @return
+	 *@2017年7月11日
+	 *@author huchao
+	 */
+	public static Date getEndOfyesterday() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY, 23);
+		calendar.set(Calendar.MINUTE, 59);
+		calendar.set(Calendar.SECOND, 59);
+		calendar.set(Calendar.MILLISECOND, 999);
+		calendar.add(Calendar.DATE, -1);
+		Date date = calendar.getTime();
+		return date;
 	}
 }
