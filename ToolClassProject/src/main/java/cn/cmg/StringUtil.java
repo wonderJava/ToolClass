@@ -1,4 +1,4 @@
-package csTools;
+package cn.cmg;
 import java.math.BigDecimal;
 import java.sql.Clob;
 import java.text.SimpleDateFormat;
