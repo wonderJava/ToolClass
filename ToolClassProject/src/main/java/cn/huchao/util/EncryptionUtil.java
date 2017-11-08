@@ -153,7 +153,7 @@ public class EncryptionUtil {
 		} else {
 			byte[] md5 = null;
 			try {
-				md5 = md5("123".getBytes());
+				md5 = md5("str".getBytes());
 			} catch (NoSuchAlgorithmException e) {
 				logger.error("MD5加密错误", e);
 			}
@@ -193,7 +193,7 @@ public class EncryptionUtil {
 		System.out.println(encrypt);
 		String decrypt = decrypt(encrypt, "cmoscmot");
 		System.out.println(decrypt);
-		String sb = md5("123");
+		String sb = md5("123456");
 		System.out.println(sb);
 		System.out.println(sb.length());
 
