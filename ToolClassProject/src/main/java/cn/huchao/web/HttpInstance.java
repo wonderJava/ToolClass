@@ -31,10 +31,10 @@ public class HttpInstance {
 		String doPost = HttpUtil.sendPost(url, requestBody);
 		System.out.println(doPost);*/
 		//退款测试
-		/*String requestBody = "transdata=%7B%22succdata%22%3A%2220170725142334837060449%5E0.01%22%2C%22faildata%22%3A%22%22%2C%22appid%22%3A%225000001452%22%2C%22notifytime%22%3A%222017-07-25+14%3A25%3A08%22%2C%22refundno%22%3A%2220170725142454897592%22%7D&sign=tTx%2BChOezrfpppU1%2FQuc%2Fpa9GVc%2FLV4rjA9n3KAe7aVs0m1kNFtKbthG0L7orj4Xns2vEUNEz7ngxcSsaRBxgYrIhWurMN4LUNRGQvRMacTcTdaw86RM4ISQLMz1HQGcP%2BRryDk8txTEbhJ7VuF0XBJckYrEwJj31PAGrEh4pNo%3D&signtype=RSA";
+		String requestBody = "transdata=%7B%22succdata%22%3A%2220170725142334837060449%5E0.01%22%2C%22faildata%22%3A%22%22%2C%22appid%22%3A%225000001452%22%2C%22notifytime%22%3A%222017-07-25+14%3A25%3A08%22%2C%22refundno%22%3A%2220170725142454897592%22%7D&sign=tTx%2BChOezrfpppU1%2FQuc%2Fpa9GVc%2FLV4rjA9n3KAe7aVs0m1kNFtKbthG0L7orj4Xns2vEUNEz7ngxcSsaRBxgYrIhWurMN4LUNRGQvRMacTcTdaw86RM4ISQLMz1HQGcP%2BRryDk8txTEbhJ7VuF0XBJckYrEwJj31PAGrEh4pNo%3D&signtype=RSA";
 		String url = "http://192.168.91.116:28090/top/front/sh/refundOrder!callRefundOrder?uid=refund_0006";
 		String doPost = HttpUtil.sendPost(url, requestBody);
-		System.out.println(doPost);*/
+		System.out.println(doPost);
 		/*String requestBody = "transdata=%7B%22cporderid%22%3A%2220170605182356546444668%22%2C%22transtype%22%3A0%2C%22result%22%3A2%2C%22transtime%22%3A%222017-06-05+18%3A24%3A03%22%2C%22appuserid%22%3A%2218239639432%22%2C%22paytype%22%3A1001%2C%22money%22%3A0.03%2C%22waresid%22%3A1%2C%22appid%22%3A%225000001448%22%2C%22feetype%22%3A0%2C%22transid%22%3A%2232201706051823565056130%22%2C%22cpprivate%22%3A%22%7B%5C%22phone%5C%22%3A%5C%222222%5C%22%7D%22%2C%22currency%22%3A%22RMB%22%7D&sign=WMS%2FySKwp7SH98VUHxvxDGLifazVGgCyM%2BeKr5FAFcore3WeA2swM3yTfXOo6QVrydkOsKQbSdOcZEj25IQCqBd8roVfeUrYbrXaJIu7NFQSxzA3Z%2Bm5SyGJ%2BFwE6tXj65l9d%2BAbz1Wgtt8%2FnnZuPepU70%2FxSG2PSB8pFvRuiKo%3D&signtype=RSA";
 		String url = "http://192.168.91.116:28090/top/front/sh/order!callOrder?uid=order_0002";
 		String doPost = doPost(url, requestBody);

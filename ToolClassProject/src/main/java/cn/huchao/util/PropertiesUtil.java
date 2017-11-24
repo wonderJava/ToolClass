@@ -62,7 +62,7 @@ public class PropertiesUtil {
 		if (null == props) {
 			loadProps();
 		}
-		return props.getProperty(key);
+		return props.getProperty(key).trim();
 	}
 
 	public static String getProperty(String key, String defaultValue) {

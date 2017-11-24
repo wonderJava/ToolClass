@@ -1,4 +1,6 @@
 package cn.huchao.web;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
@@ -15,8 +17,24 @@ public class Pra5 {
 		System.out.println(str1);
 		System.out.println(str2);
 		System.out.println(b);*/
-		 
-
+		List<String> list1 =new ArrayList<>();
+		List<String> list3 =new ArrayList<>();
+		List<Object> list2 =new ArrayList<>();
+		list1.add("1");
+		list1.add("2");
+		list3.add("3");
+		list3.add("4");
+		System.out.println("list1 is :"+list1);
+		list2.add(list1);
+		list2.add(list3);
+		System.out.println("list2 is :"+list2);
+		list1.clear();
+		System.out.println("clear list1");
+		System.out.println("list1 is :"+list1);
+		System.out.println("list2 is :"+list2);
+		List<Object> list4=(List<Object>) list2.get(0);
+		list4.add("55");
+		System.out.println("after clear ,get list2  add is:"+list4);
 	}
 	
 	   

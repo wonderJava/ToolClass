@@ -189,9 +189,9 @@ public class EncryptionUtil {
 	}
 
 	public static void main(String[] args) {
-		String encrypt = encrypt("huchao", "cmoscmot");
+		String encrypt = encrypt("huchao345", "cmoscmos");
 		System.out.println(encrypt);
-		String decrypt = decrypt(encrypt, "cmoscmot");
+		String decrypt = decrypt(encrypt, "cmoscmos");
 		System.out.println(decrypt);
 		String sb = md5("123456");
 		System.out.println(sb);
